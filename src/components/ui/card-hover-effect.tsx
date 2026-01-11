@@ -19,6 +19,39 @@ export const HoverEffect = ({
 }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
+  const CardContent = ({ item, idx }: { item: typeof items[0]; idx: number }) => (
+    <>
+      <AnimatePresence>
+        {hoveredIndex === idx && (
+          <motion.span
+            className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.8] block rounded-3xl"
+            layoutId="hoverBackground"
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: 1,
+              transition: { duration: 0.15 },
+            }}
+            exit={{
+              opacity: 0,
+              transition: { duration: 0.15, delay: 0.2 },
+            }}
+          />
+        )}
+      </AnimatePresence>
+      <Card>
+        <div className="flex items-center gap-3">
+          {item.icon && (
+            <div className="p-2 rounded-lg bg-primary/10 text-primary">
+              {item.icon}
+            </div>
+          )}
+          <CardTitle>{item.title}</CardTitle>
+        </div>
+        <CardDescription>{item.description}</CardDescription>
+      </Card>
+    </>
+  );
+
   return (
     <div
       className={cn(
@@ -27,46 +60,20 @@ export const HoverEffect = ({
       )}
     >
       {items.map((item, idx) => {
-        const Wrapper = item.link ? Link : "div";
-        const wrapperProps = item.link ? { href: item.link } : {};
+        const commonProps = {
+          className: "relative group block p-2 h-full w-full",
+          onMouseEnter: () => setHoveredIndex(idx),
+          onMouseLeave: () => setHoveredIndex(null),
+        };
 
-        return (
-          <Wrapper
-            {...wrapperProps}
-            key={item.title}
-            className="relative group block p-2 h-full w-full"
-            onMouseEnter={() => setHoveredIndex(idx)}
-            onMouseLeave={() => setHoveredIndex(null)}
-          >
-            <AnimatePresence>
-              {hoveredIndex === idx && (
-                <motion.span
-                  className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.8] block rounded-3xl"
-                  layoutId="hoverBackground"
-                  initial={{ opacity: 0 }}
-                  animate={{
-                    opacity: 1,
-                    transition: { duration: 0.15 },
-                  }}
-                  exit={{
-                    opacity: 0,
-                    transition: { duration: 0.15, delay: 0.2 },
-                  }}
-                />
-              )}
-            </AnimatePresence>
-            <Card>
-              <div className="flex items-center gap-3">
-                {item.icon && (
-                  <div className="p-2 rounded-lg bg-primary/10 text-primary">
-                    {item.icon}
-                  </div>
-                )}
-                <CardTitle>{item.title}</CardTitle>
-              </div>
-              <CardDescription>{item.description}</CardDescription>
-            </Card>
-          </Wrapper>
+        return item.link ? (
+          <Link key={item.title} href={item.link} {...commonProps}>
+            <CardContent item={item} idx={idx} />
+          </Link>
+        ) : (
+          <div key={item.title} {...commonProps}>
+            <CardContent item={item} idx={idx} />
+          </div>
         );
       })}
     </div>
