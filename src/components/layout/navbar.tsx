@@ -147,9 +147,9 @@ export function Navbar() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden overflow-hidden"
+              className="md:hidden overflow-hidden absolute left-0 right-0 top-16 bg-background border-b border-border shadow-xl"
             >
-              <div className="py-4 space-y-2">
+              <div className="py-4 space-y-2 px-4 max-w-7xl mx-auto">
                 {navItems.map((item) => (
                   <div key={item.name}>
                     <Link
