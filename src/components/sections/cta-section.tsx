@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { SparklesCore } from "@/components/ui/sparkles";
 import { ArrowRight, MessageCircle, Calendar } from "lucide-react";
@@ -62,22 +63,26 @@ export function CTASection() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white px-8 py-6 text-lg rounded-xl group"
-            >
-              <MessageCircle className="mr-2 w-5 h-5" />
-              Contact Us
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-violet-500/30 hover:bg-violet-500/10 px-8 py-6 text-lg rounded-xl"
-            >
-              <Calendar className="mr-2 w-5 h-5" />
-              Schedule a Call
-            </Button>
+            <Link href="mailto:contact@muenot.com">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white px-8 py-6 text-lg rounded-xl group"
+              >
+                <MessageCircle className="mr-2 w-5 h-5" />
+                Contact Us
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+            <Link href="mailto:contact@muenot.com?subject=Schedule a Call">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-violet-500/30 hover:bg-violet-500/10 px-8 py-6 text-lg rounded-xl"
+              >
+                <Calendar className="mr-2 w-5 h-5" />
+                Schedule a Call
+              </Button>
+            </Link>
           </div>
 
           {/* Trust Badges */}

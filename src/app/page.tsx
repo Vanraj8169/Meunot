@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { ScrollToTop } from "@/components/ui/scroll-to-top";
 import { HeroSection } from "@/components/sections/hero";
 import { OurClients } from "@/components/sections/our-clients";
 import { ServicesOverview } from "@/components/sections/services-overview";
@@ -30,6 +31,7 @@ export default function Home() {
       <AboutSection />
       <CTASection />
       <Footer />
+      <ScrollToTop />
     </main>
   );
 }

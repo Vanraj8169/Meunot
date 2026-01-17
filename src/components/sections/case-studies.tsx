@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { ArrowRight, TrendingUp, Users, Clock, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -144,13 +145,15 @@ export function CaseStudiesSection() {
                 </div>
 
                 {/* CTA */}
-                <Button
-                  variant="ghost"
-                  className="text-purple-400 hover:text-purple-300 hover:bg-purple-500/10 p-0 group/btn"
-                >
-                  Read Full Case Study
-                  <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                </Button>
+                <Link href="#footer">
+                  <Button
+                    variant="ghost"
+                    className="text-purple-400 hover:text-purple-300 hover:bg-purple-500/10 p-0 group/btn"
+                  >
+                    Read Full Case Study
+                    <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
               </div>
             </motion.div>
           ))}
@@ -163,14 +166,16 @@ export function CaseStudiesSection() {
           viewport={{ once: true }}
           className="text-center mt-12"
         >
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-purple-500/30 hover:bg-purple-500/10"
-          >
-            View All Case Studies
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Button>
+          <Link href="#footer">
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-purple-500/30 hover:bg-purple-500/10"
+            >
+              View All Case Studies
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          </Link>
         </motion.div>
       </div>
     </section>

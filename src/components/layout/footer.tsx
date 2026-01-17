@@ -24,7 +24,7 @@ const footerLinks = {
     { name: "About Us", href: "#about" },
     { name: "Careers", href: "#careers" },
     { name: "Insights", href: "#insights" },
-    { name: "Contact", href: "#contact" },
+    { name: "Contact", href: "#footer" },
   ],
   legal: [
     { name: "Privacy Policy", href: "/privacy" },
@@ -41,7 +41,7 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="relative bg-black border-t border-border overflow-hidden">
+    <footer id="footer" className="relative bg-black border-t border-border overflow-hidden">
       {/* Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-t from-violet-950/20 via-transparent to-transparent pointer-events-none" />
 
@@ -50,14 +50,17 @@ export function Footer() {
         <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Brand Column */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center space-x-2 mb-6">
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="flex items-center space-x-2 mb-6 cursor-pointer"
+            >
               <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center">
                 <span className="text-xl font-bold text-white">M</span>
               </div>
               <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-indigo-400">
                 Muenot
               </span>
-            </Link>
+            </button>
             <p className="text-muted-foreground text-sm max-w-sm mb-6">
               Empowering businesses with cutting-edge AI Data Services,
               E-Learning Solutions, Technology, Localization, and Publishing

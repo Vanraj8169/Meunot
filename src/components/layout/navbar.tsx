@@ -21,7 +21,7 @@ const navItems = [
   },
   { name: "About", href: "#about" },
   { name: "Insights", href: "#insights" },
-  { name: "Contact", href: "#contact" },
+  { name: "Contact", href: "#footer" },
 ];
 
 export function Navbar() {
@@ -37,6 +37,13 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <motion.header
       initial={{ y: -100 }}
@@ -51,14 +58,17 @@ export function Navbar() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
+          <button
+            onClick={scrollToTop}
+            className="flex items-center space-x-2 cursor-pointer"
+          >
             <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center">
               <span className="text-xl font-bold text-white">M</span>
             </div>
             <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-indigo-400">
               Muenot
             </span>
-          </Link>
+          </button>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
@@ -119,12 +129,14 @@ export function Navbar() {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button
-              variant="default"
-              className="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700"
-            >
-              Get Started
-            </Button>
+            <Link href="#footer">
+              <Button
+                variant="default"
+                className="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700"
+              >
+                Connect Now
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -176,9 +188,11 @@ export function Navbar() {
                   </div>
                 ))}
                 <div className="pt-4">
-                  <Button className="w-full bg-gradient-to-r from-violet-600 to-indigo-600">
-                    Get Started
-                  </Button>
+                  <Link href="#footer" onClick={() => setIsMobileMenuOpen(false)}>
+                    <Button className="w-full bg-gradient-to-r from-violet-600 to-indigo-600">
+                      Connect Now
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </motion.div>
