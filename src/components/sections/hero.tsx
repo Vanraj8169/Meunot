@@ -9,7 +9,7 @@ import { ArrowRight, Play } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black pt-16 md:pt-0">
       {/* Spotlight Effects */}
       <Spotlight
         className="-top-40 left-0 md:left-60 md:-top-20"
