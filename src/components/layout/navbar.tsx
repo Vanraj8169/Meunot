@@ -68,7 +68,7 @@ export function Navbar() {
               alt="Muenot"
               width={180}
               height={50}
-              className="h-10 w-auto mix-blend-screen"
+              className="h-10 w-auto"
               priority
             />
           </Link>

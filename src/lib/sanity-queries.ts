@@ -71,21 +71,21 @@ export async function getPostBySlug(slug: string): Promise<SanityPost | null> {
 }
 
 // Search posts
-export async function searchPosts(query: string): Promise<SanityPost[]> {
-  if (!isSanityConfigured() || !query) {
+export async function searchPosts(searchQuery: string): Promise<SanityPost[]> {
+  if (!isSanityConfigured() || !searchQuery) {
     return [];
   }
 
   try {
     return await client.fetch(
       `*[_type == "post" && defined(slug.current) && (
-        title match $query ||
-        excerpt match $query ||
-        $query in tags
+        title match $searchTerm ||
+        excerpt match $searchTerm ||
+        $searchTerm in tags
       )] | order(publishedAt desc) {
         ${postFields}
       }`,
-      { query: `*${query}*` }
+      { searchTerm: `*${searchQuery}*` }
     );
   } catch (error) {
     console.error("Error searching posts:", error);

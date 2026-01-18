@@ -60,11 +60,11 @@ export function Footer() {
               className="flex items-center cursor-pointer"
             >
               <Image
-                src="/logo.jpg"
+                src="/logo.png"
                 alt="Muenot"
                 width={200}
                 height={55}
-                className="h-12 w-auto mix-blend-screen"
+                className="h-12 w-auto"
               />
             </Link>
             <p className="text-muted-foreground text-sm max-w-xl md:ml-8">
