@@ -1,0 +1,39 @@
+name: Deploy to Hostinger
+
+# This workflow runs when you push to the master branch
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Step 1: Deploy via SSH to Hostinger
+      - name: Deploy to Hostinger via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            # Navigate to the project directory
+            cd ~/public_html
+            
+            # Pull latest changes from GitHub
+            git pull origin master
+            
+            # Install dependencies
+            npm install --production=false
+            
+            # Build the Next.js project
+            npm run build
+            
+            # Restart the Node.js application
+            # Hostinger usually auto-restarts, but we can touch a file to trigger
+            touch tmp/restart.txt 2>/dev/null || true
+            
+            echo "Deployment completed successfully!"
