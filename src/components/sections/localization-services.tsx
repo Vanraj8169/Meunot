@@ -126,7 +126,7 @@ export function LocalizationServices() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="grid grid-cols-3 gap-6 mb-16 max-w-3xl mx-auto"
+          className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 mb-16 max-w-3xl mx-auto"
         >
           {[
             { value: "30+", label: "Languages" },
@@ -135,12 +135,12 @@ export function LocalizationServices() {
           ].map((stat, index) => (
             <div
               key={index}
-              className="text-center p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border"
+              className="text-center p-3 sm:p-4 md:p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border"
             >
-              <div className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-amber-400">
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-amber-400 whitespace-nowrap">
                 {stat.value}
               </div>
-              <div className="text-sm text-muted-foreground mt-1">
+              <div className="text-xs sm:text-sm text-muted-foreground mt-1">
                 {stat.label}
               </div>
             </div>

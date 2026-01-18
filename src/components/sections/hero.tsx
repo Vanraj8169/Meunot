@@ -100,7 +100,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8"
+          className="mt-16 sm:mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8"
         >
           {[
             { value: "50+", label: "Clients" },
@@ -109,10 +109,10 @@ export function HeroSection() {
             { value: "99.9%", label: "Accuracy Rate" },
           ].map((stat, index) => (
             <div key={index} className="text-center">
-              <div className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-indigo-400">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-indigo-400 whitespace-nowrap">
                 {stat.value}
               </div>
-              <div className="text-sm text-muted-foreground mt-1">
+              <div className="text-xs sm:text-sm text-muted-foreground mt-1">
                 {stat.label}
               </div>
             </div>

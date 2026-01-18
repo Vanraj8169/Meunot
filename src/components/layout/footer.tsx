@@ -89,11 +89,11 @@ export function Footer() {
                   </div>
                 ))}
                 <a
-                  href="mailto:info@muenot.com"
+                  href="mailto:info@muenot.co.in"
                   className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   <Mail className="w-4 h-4" />
-                  info@muenot.com
+                  info@muenot.co.in
                 </a>
               </div>
             </div>
@@ -124,12 +124,29 @@ export function Footer() {
                     6377809826
                   </a>
                   <a
-                    href="mailto:careers@muenot.com"
+                    href="mailto:career@muenot.co.in"
                     className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mt-1"
                   >
                     <Mail className="w-4 h-4" />
-                    careers@muenot.com
+                    career@muenot.co.in
                   </a>
+                </div>
+                {/* Social Links */}
+                <div className="flex items-center gap-3 pt-2">
+                  <span className="text-sm text-muted-foreground">Join Us On</span>
+                  {socialLinks.map((social) => (
+                    <motion.a
+                      key={social.name}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="w-8 h-8 rounded-full bg-secondary/50 flex items-center justify-center text-blue-400 hover:text-foreground hover:bg-secondary transition-colors"
+                    >
+                      <social.icon className="w-4 h-4" />
+                    </motion.a>
+                  ))}
                 </div>
               </div>
             </div>
@@ -179,31 +196,13 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="py-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-muted-foreground">
+        <div className="py-6 border-t border-border flex items-center justify-center">
+          <p className="text-sm text-muted-foreground text-center">
             All Rights Reserved by Muenot Technologies | Copyright © 2020-{new Date().getFullYear()}{" "}
             <a href="https://www.muenot.com" className="hover:text-foreground transition-colors">
               www.muenot.com
             </a>
           </p>
-
-          {/* Social Links */}
-          <div className="flex items-center gap-4">
-            <span className="text-sm text-muted-foreground">Join Us On</span>
-            {socialLinks.map((social) => (
-              <motion.a
-                key={social.name}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-8 h-8 rounded-full bg-secondary/50 flex items-center justify-center text-blue-400 hover:text-foreground hover:bg-secondary transition-colors"
-              >
-                <social.icon className="w-4 h-4" />
-              </motion.a>
-            ))}
-          </div>
         </div>
       </div>
     </footer>
