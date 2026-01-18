@@ -1,6 +1,9 @@
 import { createClient } from "@sanity/client";
 import { createImageUrlBuilder } from "@sanity/image-url";
-import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+
+// Define SanityImageSource type locally (avoids version-specific import issues)
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type SanityImageSource = any;
 
 // Sanity Client Configuration
 export const client = createClient({
@@ -57,12 +60,5 @@ export interface SanityBlock {
 // Check if Sanity is configured
 export function isSanityConfigured(): boolean {
   const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
-  const isConfigured = !!(projectId && projectId !== "");
-  
-  // Debug log (remove in production)
-  if (typeof window !== "undefined") {
-    console.log("Sanity Config Check:", { projectId, isConfigured });
-  }
-  
-  return isConfigured;
+  return !!(projectId && projectId !== "");
 }
